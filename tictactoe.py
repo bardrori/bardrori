@@ -69,11 +69,16 @@ def get_move(player: Player, board: Board) -> Coords:
     :return: the coordinates the player chose
     """
     row, col = input(f"{player}'s move: ").split()
+    while int(row)>len(board) or int(col)>len(board):
+          print("our of range,try again")
+          row, col = input(f"{player}'s move: ").split()
+
     while board[int(row)][int(col)] != EMPTY:
         print("already taken, try again")
         row, col = input(f"{player}'s move: ").split()
 
     return int(row), int(col)
+
 
 
 def show_board(board: Board):
